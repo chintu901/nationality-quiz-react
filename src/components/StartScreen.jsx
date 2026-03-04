@@ -1,8 +1,34 @@
 import worldMap from '../assets/world-map.jpg'
 import '../styles/StartScreen.css'
+import { useState, useRef, useEffect } from "react";
+
+const options = [
+    "Asia",
+    "Europe",
+    "North America",
+    "South America",
+    "Africa",
+    "Oceania"
+];
 
 
-export default function StartPage(){
+export default function StartPage() {
+    const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState(null);
+    const ref = useRef(null);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="start-page">
             <div className="head">Find my Nationality</div>
@@ -11,17 +37,37 @@ export default function StartPage(){
                 you want!
                 <br />
                 <div className='content-inputs'>
-                    <div className="dropdown-wrapper">
-                        <button className="dropdown-trigger" id="trigger" onClick={() => toggleDropdown()}>
-                        <span id="selected-text">Dropdown</span>
-                        <span className="arrow"><i class="hgi hgi-stroke hgi-arrow-down-01"></i></span>
+                    <div ref={ref} className="dropdown-wrapper">
+                        {/* Trigger */}
+                        <button
+                            onClick={() => setOpen((o) => !o)}
+                            className={`dropdown-trigger${open ? " open" : ""}`}
+                            aria-haspopup="listbox"
+                            aria-expanded={open}
+                        >
+                            <span className={selected ? "dropdown-selected-text" : "dropdown-placeholder"}>
+                                {selected ?? "Choose one…"}
+                            </span>
+                            <span className={`dropdown-chevron${open ? " rotated" : ""}`}>▾</span>
                         </button>
-                        <div className="dropdown-menu" id="menu">
-                        <div className="dropdown-item" onClick={() => selectItem('Option 1')}>Option 1</div>
-                        <div className="dropdown-item" onClick={() => selectItem('Option 2')}>Option 2</div>
-                        <div className="dropdown-item" onClick={() => selectItem('Option 3')}>Option 3</div>
-                        <div className="dropdown-item" onClick={() => selectItem('Option 4')}>Option 4</div>
-                        </div>
+
+                        {/* Menu */}
+                        {open && (
+                            <ul role="listbox" className="dropdown-menu">
+                                {options.map((opt) => (
+                                    <li
+                                        key={opt}
+                                        role="option"
+                                        aria-selected={selected === opt}
+                                        onClick={() => { setSelected(opt); setOpen(false); }}
+                                        className={`dropdown-item${selected === opt ? " active" : ""}`}
+                                    >
+                                        {selected === opt && <span className="dropdown-check">✓</span>}
+                                        {opt}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                     <button className="button">Button</button>
                 </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+
 body{
     background-color: rgb(215, 167, 158);
     display: flex;
@@ -59,4 +61,117 @@ button:hover {
 
 button:active {
   background-color: #028340;
+}
+
+/* ─── Wrapper ─────────────────────────────────────────────── */
+
+.dropdown-wrapper {
+  position: relative;
+  width: 320px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── Trigger Button ──────────────────────────────────────── */
+
+.dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #1e1e24;
+  border: 1px solid #2e2e36;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  outline: none;
+}
+
+.dropdown-trigger.open {
+  border-color: #7c6fff;
+  box-shadow: 0 0 0 3px rgba(124, 111, 255, 0.18);
+}
+
+/* ─── Trigger Text States ─────────────────────────────────── */
+
+.dropdown-placeholder {
+  color: #555;
+  font-style: italic;
+}
+
+.dropdown-selected-text {
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+/* ─── Chevron ─────────────────────────────────────────────── */
+
+.dropdown-chevron {
+  color: #555;
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* ─── Menu ────────────────────────────────────────────────── */
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #1e1e24;
+  border: 1px solid #2e2e36;
+  border-radius: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.dropdown-menu::-webkit-scrollbar { width: 4px; }
+.dropdown-menu::-webkit-scrollbar-track { background: transparent; }
+.dropdown-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+.dropdown-menu::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* ─── Menu Items ──────────────────────────────────────────── */
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 7px;
+  font-size: 13.5px;
+  color: #bbb;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.dropdown-item.active {
+  color: #7c6fff;
+  background: rgba(124, 111, 255, 0.08);
+  font-weight: 600;
+}
+
+/* ─── Check Mark ──────────────────────────────────────────── */
+
+.dropdown-check {
+  font-size: 11px;
+  color: #7c6fff;
 }
