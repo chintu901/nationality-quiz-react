@@ -7,7 +7,7 @@ export default function NavBar(){
                 <img src={logo} alt="App Logo" />
             </div>
             <div className="header-buttons">
-                <button>Reset</button>
+                <button className='nav-reset-btn'>Reset</button>
             </div>
         </nav>
     )
