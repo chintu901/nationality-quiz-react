@@ -1,5 +1,5 @@
 import logo from '../assets/app-logo.png'
-import '../App.css'
+import '../styles/App.css'
 export default function NavBar(){
     return (
         <nav>

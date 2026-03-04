@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import NavBar from './components/nav-bar'
-import StartPage from './components/StartScreen'
-import './App.css'
+import StartPage from './pages/StartScreen'
+import './styles/App.css'
 
 function App() {
   const [count, setCount] = useState(0)
