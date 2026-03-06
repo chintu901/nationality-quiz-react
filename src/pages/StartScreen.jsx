@@ -31,10 +31,11 @@ export default function StartPage() {
 
     return (
         <div className="start-page">
-            <div className="head">Find my Nationality</div>
+            <div className="head">Welcome to the Nationality Guesser</div>
             <div className="content">
-                This is a neobrutalist-style window with a button and space for any content
-                you want!
+                Answer a few questions about your preferences and lifestyle, and our AI will attempt to predict the nationality you most closely match.<br/><br/>
+
+To improve the accuracy of the prediction, please select your region / continent first. This allows the quiz to ask culturally relevant questions.
                 <br />
                 <div className='content-inputs'>
                     <div ref={ref} className="dropdown-wrapper">
@@ -62,14 +63,14 @@ export default function StartPage() {
                                         onClick={() => { setSelected(opt); setOpen(false); }}
                                         className={`dropdown-item${selected === opt ? " active" : ""}`}
                                     >
-                                        {selected === opt && <span className="dropdown-check">✓</span>}
+                                        {selected === opt && <span className="dropdown-check">•</span>}
                                         {opt}
                                     </li>
                                 ))}
                             </ul>
                         )}
                     </div>
-                    <button className="button">Button</button>
+                    <button className="button">Start</button>
                 </div>
             </div>
         </div>
